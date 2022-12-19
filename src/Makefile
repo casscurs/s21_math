@@ -11,7 +11,7 @@ s21_math.a:
 	ranlib s21_math.a
 
 test:
-	$(CC) $(CFLAGS) $(LDFLAGS) s21_math.c tests.c
+	$(CC) $(CFLAGS) $(LDFLAGS) s21_math.c tests.c gcov_main -lm `pkg-config --cflags --libs check`
 
 gcov_report:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(GCOVFLAGS) s21_math.c tests.c -o gcov_main -lm `pkg-config --cflags --libs check`
