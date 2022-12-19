@@ -2,31 +2,34 @@
 
 #include <float.h>
 
+
 long double s21_factorial(int n) {
-  long double res;
+  long double res = 0.;
   if (n == 0 || n == 1) {
     res = 1.;
-  } else if (n < 0) {
-    res = 0.;
-  } else {
+  } else if (n > 1) {
     res = n * s21_factorial(n - 1);
   }
   return (res);
 }
 
 long double s21_exp(double x) {
-  long double res;
+  long double res, res_mult;
   res = 0.L;
+  res_mult = 1.L;
   if (x > DBL_MAX) {
     res = S21_INF;
-  } else if (x < -20) {
+  } else if (x < -DBL_MAX) {
     res = 0;
-    // } else if (x == S21_NAN) {
-    //   res = S21_NAN;
   } else {
+    if (s21_fabs(x) > 10) {
+      res_mult = s21_pow(S21_E, s21_floor(x));
+      x -= s21_fmod(x, 1.);
+    }
     for (int i = 0; i < 500; i += 1) {
       res += s21_pow(x, i) / s21_factorial(i);
     }
+    res = res * res_mult;
     if (res > DBL_MAX) {
       res = S21_INF;
     }
@@ -100,9 +103,6 @@ long double s21_log(double x) {
     }
     res = res * 2 * y;
     res += tmp;
-    if (res > DBL_MAX) {
-      res = S21_INF;
-    }
   }
   return res;
 }
