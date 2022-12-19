@@ -11,7 +11,6 @@
 #define S21_NAN S21_INF - S21_INF
 
 // Abs, fabs, ceil, floor, fmod functions
-
 int s21_abs(int x);
 long double s21_fabs(double x);
 long double s21_ceil(double x);

@@ -318,6 +318,84 @@ START_TEST(s21_log_tests) {
 }
 END_TEST
 
+// START_TEST(s21_asin_tests) {
+//   // test 1
+//   ck_assert_float_nan(s21_asin(-S21_INF));
+
+//   // test 2
+//   ck_assert_float_nan(s21_asin(S21_INF));
+
+//   // test 3
+//   ck_assert_float_nan(s21_asin(S21_NAN));
+
+//   // test 4
+//   ck_assert_float_eq_tol(s21_asin(-1000), sin(-1000), 1e-15);
+
+//   // test 5
+//     for (double x = -0.1; x < 0.1; x += 0.01) {
+//         ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
+//     }
+
+//   // test 6
+//     for (double x = 100; x < 1000; x += 100) {
+//         ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
+//     }
+
+// }
+// END_TEST
+
+// START_TEST(s21_acos_tests) {
+//   // test 1
+//   ck_assert_float_nan(s21_acos(-S21_INF));
+
+//   // test 2
+//   ck_assert_float_nan(s21_acos(S21_INF));
+
+//   // test 3
+//   ck_assert_float_nan(s21_acos(S21_NAN));
+
+//   // test 4
+//   ck_assert_float_eq_tol(s21_acos(-1000), cos(-1000), 1e-15);
+
+//   // test 5
+//   for (double x = -0.1; x < 0.1; x += 0.01) {
+//       ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
+//   }
+
+//   // test 6
+//   for (double x = 100; x < 1000; x += 100) {
+//       ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
+//   }
+  
+// }
+// END_TEST
+
+// START_TEST(s21_atan_tests) {
+//   // test 1
+//   ck_assert_float_nan(s21_atan(-S21_INF));
+
+//   // test 2
+//   ck_assert_float_nan(s21_atan(S21_INF));
+
+//   // test 3
+//   ck_assert_float_nan(s21_atan(S21_NAN));
+
+//   // test 4
+//   ck_assert_float_eq_tol(s21_atan(-1000), tan(-1000), 1e-15);
+
+//   // test 5
+//   for (double x = -S21_PI; x < S21_PI; x += 0.1) {
+//     ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
+//   }
+
+//   // test 6
+//   for (double x = 100; x < 1000; x += 100) {
+//     ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
+//   }
+
+// }
+// END_TEST
+
 Suite *s21_math(void){
     Suite *s;
     TCase *tc_tests;
@@ -337,6 +415,10 @@ Suite *s21_math(void){
     tcase_add_test(tc_tests, s21_cos_tests);
     tcase_add_test(tc_tests, s21_tan_tests);
     tcase_add_test(tc_tests, s21_log_tests);
+
+    //tcase_add_test(tc_tests, s21_acos_tests);
+    //tcase_add_test(tc_tests, s21_asin_tests);
+    //tcase_add_test(tc_tests, s21_atan_tests);
     
     suite_add_tcase(s, tc_tests);
     

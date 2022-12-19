@@ -14,7 +14,7 @@ test:
 	$(CC) $(CFLAGS) $(LDFLAGS) s21_math.c tests.c
 
 gcov_report:
-	$(CC) $(CFLAGS) $(LDFLAGS) $(GCOVFLAGS) s21_math.c tests.c -o gcov_main
+	$(CC) $(CFLAGS) $(LDFLAGS) $(GCOVFLAGS) s21_math.c tests.c -o gcov_main -lm `pkg-config --cflags --libs check`
 	./gcov_main
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory gcov_report
