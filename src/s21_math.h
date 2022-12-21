@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-#include <check.h>
-#include <ctype.h>
-#include <stdint.h>
+#ifndef SRC_S21_MATH_H_
+#define SRC_S21_MATH_H_
 
 #define S21_E 2.71828182845904
 #define S21_PI 3.14159265358979
@@ -29,3 +25,5 @@ long double s21_cos(double x);
 long double s21_sin(double x);
 long double s21_tan(double x);
 long double s21_log(double x);
+
+#endif  // SRC_S21_MATH_H_
