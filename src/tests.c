@@ -154,7 +154,13 @@ START_TEST(s21_pow_tests) {
   ck_assert_float_eq(s21_pow(4, 20), pow(4, 20));
 
   // test 8
+  ck_assert_float_eq(s21_pow(4, 20.5), pow(4, 20.5));
+
+  // test 9
   ck_assert_float_eq(s21_pow(4, -10), pow(4, -10));
+
+  // test 8
+  ck_assert_float_eq(s21_pow(4, -1e20), pow(4, -1e20));
 }
 END_TEST
 
@@ -191,13 +197,28 @@ START_TEST(s21_exp_tests) {
   ck_assert_float_nan(s21_exp(S21_NAN));
 
   // test 4
-  ck_assert_float_eq_tol(s21_exp(-100), exp(-100), 1e-15);
+  ck_assert_float_eq(s21_exp(-10), exp(-10));
+
+  // test 4
+  ck_assert_float_eq(s21_exp(-20), exp(-20));
 
   // test 5
-  ck_assert_float_eq(s21_exp(0.0005), exp(0.0005));
+  ck_assert_float_eq(s21_exp(1e-30), exp(1e-30));
 
   // test 6
+  ck_assert_float_eq(s21_exp(0.00001), exp(0.00001));
+
+  // test 7
+  ck_assert_float_eq(s21_exp(0.0005), exp(0.0005));
+
+  // test 8
   ck_assert_float_eq(s21_exp(3000), exp(3000));
+
+  // test 9
+  ck_assert_float_eq(s21_exp(8000), exp(8000));
+
+  // test 10
+  ck_assert_float_eq(s21_exp(-1000), exp(-1000));
 }
 END_TEST
 
@@ -302,8 +323,14 @@ START_TEST(s21_log_tests) {
   // test 7
   ck_assert_float_eq(s21_log(DBL_MAX * 2), log(DBL_MAX * 2));
 
-  // test 7
+  // test 8
   ck_assert_float_eq(s21_log(LDBL_MAX), log(LDBL_MAX));
+
+  // test 9
+  ck_assert_float_eq(s21_log(0.00001), log(0.00001));
+
+   // test 10
+  ck_assert_float_eq(s21_log(1e-20), log(1e-20));
 }
 END_TEST
 

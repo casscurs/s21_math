@@ -1,5 +1,4 @@
 #include "s21_math.h"
-
 #include <float.h>
 
 // Abs, fabs, ceil, floor, fmod functions
@@ -62,22 +61,23 @@ long double s21_factorial(int n) {
 }
 
 long double s21_exp(double x) {
-  long double res, res_mult;
-  res = 0.L;
-  res_mult = 1.L;
+  long double res = 0.L;
+  int is_x_negative = 0;
   if (x > DBL_MAX) {
     res = S21_INF;
   } else if (x < -DBL_MAX) {
     res = 0;
   } else {
-    if (s21_fabs(x) > 10) {
-      res_mult = s21_pow(S21_E, s21_floor(x));
-      x -= s21_fmod(x, 1.);
+    if (x < 0) {
+      is_x_negative = 1;
+      x = -x;
     }
     for (int i = 0; i < 500; i += 1) {
       res += s21_pow(x, i) / s21_factorial(i);
     }
-    res = res * res_mult;
+    if (is_x_negative) {
+      res = 1 / res;
+    }
     if (res > DBL_MAX) {
       res = S21_INF;
     }
@@ -132,6 +132,7 @@ long double s21_tan(double x) {
 
 long double s21_log(double x) {
   long double res;
+  int is_small = 0;
   res = 0.L;
   if (x < 0 || x == S21_NAN) {
     res = S21_NAN;
@@ -141,16 +142,23 @@ long double s21_log(double x) {
     res = -S21_INF;
   } else {
     long double tmp = 0.;
+    if (x < 0.01) {
+      x = 1 / x;
+      is_small = 1;
+    }
     while (x > S21_E) {
       x = x / S21_E;
       tmp += 1.;
     }
     long double y = (x - 1) / (x + 1);
-    for (int i = 0; i < 500; i += 1) {
+    for (int i = 0; i < 2000; i += 1) {
       res += s21_pow(y, 2 * i) / (2 * i + 1);
     }
     res = res * 2 * y;
     res += tmp;
+    if (is_small) {
+      res = - res;
+    }
   }
   return res;
 }

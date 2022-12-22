@@ -25,3 +25,5 @@ clean:
 
 style_check:
 	clang-format -style=Google -n *.c *.h
+
+rebuild: clean all
