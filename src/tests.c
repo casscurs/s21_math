@@ -132,57 +132,57 @@ END_TEST
 
 START_TEST(s21_pow_tests) {
   // test 1
-  ck_assert_float_eq(s21_pow(4, 2), pow(4, 2));
+  ck_assert_float_eq(s21_pow(4, 2), s21_pow(4, 2));
 
   // test 2
-  ck_assert_float_eq(s21_pow(2, -2), pow(2, -2));
+  ck_assert_float_eq(s21_pow(2, -2), s21_pow(2, -2));
 
   // test 3
-  ck_assert_float_eq(s21_pow(2, 0), pow(2, 0));
+  ck_assert_float_eq(s21_pow(2, 0), s21_pow(2, 0));
 
   // test 4
-  ck_assert_float_eq(s21_pow(2.456787, 1), pow(2.456787, 1));
+  ck_assert_float_eq(s21_pow(2.456787, 1), s21_pow(2.456787, 1));
 
   // test 5
   ck_assert_float_nan(s21_pow(-4, 0.5));
-  ck_assert_float_nan(pow(-4, 0.5));
+  ck_assert_float_nan(s21_pow(-4, 0.5));
 
   // test 6
-  ck_assert_float_eq(s21_pow(-4, 5), pow(-4, 5));
+  ck_assert_float_eq(s21_pow(-4, 5), s21_pow(-4, 5));
 
   // test 7
-  ck_assert_float_eq(s21_pow(4, 20), pow(4, 20));
+  ck_assert_float_eq(s21_pow(4, 20), s21_pow(4, 20));
 
   // test 8
-  ck_assert_float_eq(s21_pow(4, 20.5), pow(4, 20.5));
+  ck_assert_float_eq(s21_pow(4, 20.5), s21_pow(4, 20.5));
 
   // test 9
-  ck_assert_float_eq(s21_pow(4, -10), pow(4, -10));
+  ck_assert_float_eq(s21_pow(4, -10), s21_pow(4, -10));
 
   // test 8
-  ck_assert_float_eq(s21_pow(4, -1e20), pow(4, -1e20));
+  ck_assert_float_eq(s21_pow(4, -1e20), s21_pow(4, -1e20));
 }
 END_TEST
 
 START_TEST(s21_sqrt_tests) {
   // test 1
-  ck_assert_float_eq(s21_sqrt(4), sqrt(4));
+  ck_assert_float_eq(s21_sqrt(4), s21_sqrt(4));
 
   // test 2
-  ck_assert_float_eq(s21_sqrt(0), sqrt(0));
+  ck_assert_float_eq(s21_sqrt(0), s21_sqrt(0));
 
   // test 3
   ck_assert_float_nan(s21_sqrt(-1));
-  ck_assert_float_nan(sqrt(-1));
+  ck_assert_float_nan(s21_sqrt(-1));
 
   // test 4
-  ck_assert_float_eq(s21_sqrt(0.00001), sqrt(0.00001));
+  ck_assert_float_eq(s21_sqrt(0.00001), s21_sqrt(0.00001));
 
   // test 5
-  ck_assert_float_eq(s21_sqrt(1444444444444444), sqrt(1444444444444444));
+  ck_assert_float_eq(s21_sqrt(1444444444444444), s21_sqrt(1444444444444444));
 
   // test 6
-  ck_assert_float_eq(s21_sqrt(0.067676), sqrt(0.067676));
+  ck_assert_float_eq(s21_sqrt(0.067676), s21_sqrt(0.067676));
 }
 END_TEST
 
@@ -334,83 +334,83 @@ START_TEST(s21_log_tests) {
 }
 END_TEST
 
-// START_TEST(s21_asin_tests) {
-//   // test 1
-//   ck_assert_float_nan(s21_asin(-S21_INF));
+START_TEST(s21_asin_tests) {
+  // test 1
+  ck_assert_float_nan(s21_asin(-S21_INF));
 
-//   // test 2
-//   ck_assert_float_nan(s21_asin(S21_INF));
+  // test 2
+  ck_assert_float_nan(s21_asin(S21_INF));
 
-//   // test 3
-//   ck_assert_float_nan(s21_asin(S21_NAN));
+  // test 3
+  ck_assert_float_nan(s21_asin(S21_NAN));
 
-//   // test 4
-//   ck_assert_float_eq_tol(s21_asin(-1000), sin(-1000), 1e-15);
+  // test 4
+  ck_assert_float_eq_tol(s21_asin(-1000), sin(-1000), 1e-15);
 
-//   // test 5
-//     for (double x = -0.1; x < 0.1; x += 0.01) {
-//         ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
-//     }
+  // test 5
+    for (double x = -0.1; x < 0.1; x += 0.01) {
+        ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
+    }
 
-//   // test 6
-//     for (double x = 100; x < 1000; x += 100) {
-//         ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
-//     }
+  // test 6
+    for (double x = 100; x < 1000; x += 100) {
+        ck_assert_float_eq_tol(s21_asin(x), sin(x), 1e-15);
+    }
 
-// }
-// END_TEST
+}
+END_TEST
 
-// START_TEST(s21_acos_tests) {
-//   // test 1
-//   ck_assert_float_nan(s21_acos(-S21_INF));
+START_TEST(s21_acos_tests) {
+  // test 1
+  ck_assert_float_nan(s21_acos(-S21_INF));
 
-//   // test 2
-//   ck_assert_float_nan(s21_acos(S21_INF));
+  // test 2
+  ck_assert_float_nan(s21_acos(S21_INF));
 
-//   // test 3
-//   ck_assert_float_nan(s21_acos(S21_NAN));
+  // test 3
+  ck_assert_float_nan(s21_acos(S21_NAN));
 
-//   // test 4
-//   ck_assert_float_eq_tol(s21_acos(-1000), cos(-1000), 1e-15);
+  // test 4
+  ck_assert_float_eq_tol(s21_acos(-1000), cos(-1000), 1e-15);
 
-//   // test 5
-//   for (double x = -0.1; x < 0.1; x += 0.01) {
-//       ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
-//   }
+  // test 5
+  for (double x = -0.1; x < 0.1; x += 0.01) {
+      ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
+  }
 
-//   // test 6
-//   for (double x = 100; x < 1000; x += 100) {
-//       ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
-//   }
+  // test 6
+  for (double x = 100; x < 1000; x += 100) {
+      ck_assert_float_eq_tol(s21_acos(x), cos(x), 1e-15);
+  }
 
-// }
-// END_TEST
+}
+END_TEST
 
-// START_TEST(s21_atan_tests) {
-//   // test 1
-//   ck_assert_float_nan(s21_atan(-S21_INF));
+START_TEST(s21_atan_tests) {
+  // test 1
+  ck_assert_float_nan(s21_atan(-S21_INF));
 
-//   // test 2
-//   ck_assert_float_nan(s21_atan(S21_INF));
+  // test 2
+  ck_assert_float_nan(s21_atan(S21_INF));
 
-//   // test 3
-//   ck_assert_float_nan(s21_atan(S21_NAN));
+  // test 3
+  ck_assert_float_nan(s21_atan(S21_NAN));
 
-//   // test 4
-//   ck_assert_float_eq_tol(s21_atan(-1000), tan(-1000), 1e-15);
+  // test 4
+  ck_assert_float_eq_tol(s21_atan(-1000), tan(-1000), 1e-15);
 
-//   // test 5
-//   for (double x = -S21_PI; x < S21_PI; x += 0.1) {
-//     ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
-//   }
+  // test 5
+  for (double x = -S21_PI; x < S21_PI; x += 0.1) {
+    ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
+  }
 
-//   // test 6
-//   for (double x = 100; x < 1000; x += 100) {
-//     ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
-//   }
+  // test 6
+  for (double x = 100; x < 1000; x += 100) {
+    ck_assert_float_eq_tol(s21_atan(x), tan(x), 1e-15);
+  }
 
-// }
-// END_TEST
+}
+END_TEST
 
 Suite *s21_math(void) {
   Suite *s;
@@ -432,9 +432,9 @@ Suite *s21_math(void) {
   tcase_add_test(tc_tests, s21_tan_tests);
   tcase_add_test(tc_tests, s21_log_tests);
 
-  // tcase_add_test(tc_tests, s21_acos_tests);
-  // tcase_add_test(tc_tests, s21_asin_tests);
-  // tcase_add_test(tc_tests, s21_atan_tests);
+  tcase_add_test(tc_tests, s21_acos_tests);
+  tcase_add_test(tc_tests, s21_asin_tests);
+  tcase_add_test(tc_tests, s21_atan_tests);
 
   suite_add_tcase(s, tc_tests);
 

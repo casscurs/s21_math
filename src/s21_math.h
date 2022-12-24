@@ -26,4 +26,8 @@ long double s21_sin(double x);
 long double s21_tan(double x);
 long double s21_log(double x);
 
+long double s21_atan(double x);
+long double s21_asin(double x);
+long double s21_acos(double x);
+
 #endif  // SRC_S21_MATH_H_
