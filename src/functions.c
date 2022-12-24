@@ -1,52 +1,93 @@
-// M_Pi
 #include "s21_math.h"
-#define SIZE 9 
-long double arctan(double x);
+#include <float.h>
+#include <math.h>
 
-int main() {
-  double test[SIZE];
-  test[0]=-1000;
-  test[1]=-5.638;
-  test[2]=-1;
-  test[3]=-0.39;
-  test[4]=0;
-  test[5]=1000;
-  test[6]=5.638;
-  test[7]=1;
-  test[8]=0.39;
-
-  var variables = {0};
-  variables.x=1;
-  for (int i=0;i<SIZE;i++){
-    variables.x=test[i];
-  printf("mine %lf: %Lf\n",test[i],arctan(variables.x));
-  printf("original %lf: %f\n\n",test[i],atan(variables.x));
+long double s21_asin(double x) {
+  long double res = 0;
+  /*
+  Base worкable range
+  */
+  if ((x > -1) && (x < 1) && (x != S21_NAN)) {
+    res = s21_atan(x / sqrt(1 - x * x));
   }
-  printf("asin %lf: %f\n",1000.1,asin(1000));
-  return 0;
+  /*
+  Special cases
+  */
+  if ((x < -1) || (x > 1)) {
+    res = S21_NAN;
+  }
+  if (x == S21_NAN) {
+    res = S21_NAN;
+  }
+  if (x == (-1)) {
+    res = -S21_PI / 2;
+  }
+  if (x == 1) {
+    res = S21_PI / 2;
+  }
+  return (res);
 }
-long double arctan(double x) {
-  long double resSum=0;
-if ((x > -1) && (x<1)){
- for (int i=0;i<500;i++){
-  resSum+=pow(-1,i)*pow(x,(1+2*i))/(1+2*i);
- }
+long double s21_acos(double x) {
+  long double res = 0;
+  /*
+  Base worкable range
+  */
+  if ((x > 0) && (x < 1) && (x != S21_NAN)) {
+    res = s21_atan(sqrt(1 - x * x) / x);
+  }
+  if ((x > -1) && (x < 0) && (x != S21_NAN)) {
+    res = S21_PI + s21_atan(sqrt(1 - x * x) / x);
+  }
+  /*
+  Special cases
+  */
+  if (x == S21_NAN) {
+    res = S21_NAN;
+  }
+  if (x > -1 || x > 1) {
+    res = S21_NAN;
+  }
+  if ((x) == (-1)) {
+    res = S21_PI;
+  }
+  if ((x) == 1) {
+    res = 0;
+  }
+  return (res);
 }
-if ((x < -1) || (x>1)){
- for (int i=0;i<500;i++){
-resSum+=pow(-1,i)*pow(x,(-1-2*i))/(1+2*i);
- }
- resSum=M_PI*sqrt(x*x)/(2*x) - resSum;
-}
-if ((x) == (-1)){
-resSum=-M_PI/4;
-}
-if ((x) == 1){
-resSum=M_PI/4;
-}
-return(resSum);
-}
-
-long double arctan(double x){
-
+long double s21_atan(double x) {
+  long double res = 0;
+  /*
+  Base worкable range
+  */
+  if ((x > -1) && (x < 1) && (x != S21_NAN)) {
+    for (int i = 0; i < 500; i++) {
+      res += pow(-1, i) * pow(x, (1 + 2 * i)) / (1 + 2 * i);
+    }
+  }
+  if ((x < -1) || (x > 1)) {
+    for (int i = 0; i < 500; i++) {
+      res += pow(-1, i) * pow(x, (-1 - 2 * i)) / (1 + 2 * i);
+    }
+    res = S21_PI * sqrt(x * x) / (2 * x) - res;
+  }
+  /*
+  Special cases
+  */
+  if ((x) == (-1)) {
+    res = -S21_PI / 4;
+  }
+  if ((x) == 1) {
+    res = S21_PI / 4;
+  }
+  if (x == S21_NAN) {
+    res = S21_NAN;
+  }
+  if ((x) == (-S21_INF)) {
+    res = -S21_PI / 2;
+  }
+  if ((x) == S21_INF) {
+    res = S21_PI / 2;
+  }
+  return (res);
 }

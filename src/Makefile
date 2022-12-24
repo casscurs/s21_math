@@ -3,7 +3,7 @@ HEADER = s21_math.h
 SRCS = functions.c
 OBJS	= $(patsubst %.c,%.o,$(SRCS))
 D_FILES = $(patsubst %.c,%.d,$(SRCS))
-FLAGS =	-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 all : $(NAME)
