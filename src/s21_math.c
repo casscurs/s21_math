@@ -162,6 +162,9 @@ long double s21_log(double x) {
   }
   return res;
 }
+
+// asin acos atan functions
+
 long double s21_asin(double x) {
   long double res = 0;
   /*
