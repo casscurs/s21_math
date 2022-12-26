@@ -88,7 +88,7 @@ long double s21_exp(double x) {
 long double s21_cos(double x) {
   long double res;
   res = 0.L;
-  if (s21_fabs(x) > DBL_MAX || x == S21_NAN) {
+  if (s21_fabs(x) > DBL_MAX || x != x) {
     res = S21_NAN;
   } else {
     x = s21_fmod(x, 2 * S21_PI);
@@ -102,7 +102,7 @@ long double s21_cos(double x) {
 long double s21_sin(double x) {
   long double res;
   res = 0.L;
-  if (s21_fabs(x) > DBL_MAX || x == S21_NAN) {
+  if (s21_fabs(x) > DBL_MAX || x != x) {
     res = S21_NAN;
   } else {
     x = s21_fmod(x, 2 * S21_PI);
@@ -116,7 +116,7 @@ long double s21_sin(double x) {
 long double s21_tan(double x) {
   long double res;
   res = 0.L;
-  if (s21_fabs(x) > DBL_MAX || x == S21_NAN) {
+  if (s21_fabs(x) > DBL_MAX || x != x) {
     res = S21_NAN;
   } else {
     x = s21_fmod(x, 2 * S21_PI);
@@ -134,7 +134,7 @@ long double s21_log(double x) {
   long double res;
   int is_small = 0;
   res = 0.L;
-  if (x < 0 || x == S21_NAN) {
+  if (x < 0 || x != x) {
     res = S21_NAN;
   } else if (x > DBL_MAX) {
     res = S21_INF;
@@ -179,7 +179,7 @@ long double s21_asin(double x) {
   if ((x < -1) || (x > 1)) {
     res = S21_NAN;
   }
-  if (x == S21_NAN) {
+  if (x != x) {
     res = S21_NAN;
   }
   if (x == (-1)) {
@@ -204,7 +204,7 @@ long double s21_acos(double x) {
   /*
   Special cases
   */
-  if (x == S21_NAN) {
+  if (x != x) {
     res = S21_NAN;
   }
   if (x > -1 || x > 1) {
@@ -243,7 +243,7 @@ long double s21_atan(double x) {
   if ((x) == 1) {
     res = S21_PI / 4;
   }
-  if (x == S21_NAN) {
+  if (x != x) {
     res = S21_NAN;
   }
   if ((x) == (-S21_INF)) {
