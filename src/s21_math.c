@@ -1,4 +1,5 @@
 #include "s21_math.h"
+
 #include <float.h>
 
 // Abs, fabs, ceil, floor, fmod functions
@@ -123,8 +124,8 @@ long double s21_tan(double x) {
     long double cosx = s21_cos(x);
     if (s21_fabs(cosx) >= LDBL_MIN) {
       res = s21_sin(x) / cosx;
-    } else {
-      res = S21_NAN;
+      //    } else {
+      //      res = S21_NAN;
     }
   }
   return res;
@@ -157,7 +158,7 @@ long double s21_log(double x) {
     res = res * 2 * y;
     res += tmp;
     if (is_small) {
-      res = - res;
+      res = -res;
     }
   }
   return res;
@@ -182,6 +183,7 @@ long double s21_asin(double x) {
   if (x != x) {
     res = S21_NAN;
   }
+
   if (x == (-1)) {
     res = -S21_PI / 2;
   }
@@ -204,10 +206,13 @@ long double s21_acos(double x) {
   /*
   Special cases
   */
+  if (x == 0) {
+    res = S21_PI / 2;
+  }
   if (x != x) {
     res = S21_NAN;
   }
-  if (x > -1 || x > 1) {
+  if (x < -1 || x > 1) {
     res = S21_NAN;
   }
   if ((x) == (-1)) {
