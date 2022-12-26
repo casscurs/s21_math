@@ -310,8 +310,12 @@ START_TEST(s21_log_tests) {
   // test 4
   ck_assert_float_nan(s21_log(-100));
 
+  // test 7
+
+  ck_assert_float_eq(s21_log(DBL_EPSILON), log(DBL_EPSILON));
+
   // test 5
-  for (double x = 0; x < 1; x += 0.1) {
+  for (double x = 0.1; x < 1; x += 0.1) {
     ck_assert_float_eq(s21_log(x), log(x));
   }
 
